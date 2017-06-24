@@ -46,6 +46,7 @@ contract BattleDromeICO {
 	FAMEToken public Token;
 	address public creator;
 	uint public savedBalance;
+	uint public bool creatorPaid = false;		//Has the creator been paid? 
 
 	mapping(address => uint) balances;			//Balances in incoming Ether
 	mapping(address => uint) savedBalances;		//Saved Balances in incoming Ether (for after withdrawl validation)
@@ -135,24 +136,26 @@ contract BattleDromeICO {
 
 	//Function to pay back Ether
 	function payBack() internal {
-		require(balances[msg.sender]>0);				//Does the requester have a balance?
-		msg.sender.transfer(balances[msg.sender]);		//Send them back their balance in Ether
-		PayEther(msg.sender,balances[msg.sender],now); 	//Log payback of ether
-		balances[msg.sender] = 0;						//And zero their balance.
+		require(balances[msg.sender]>0);						//Does the requester have a balance?
+		balances[msg.sender] = 0;								//Ok, zero balance first to avoid re-entrance
+		msg.sender.transfer(savedBalances[msg.sender]);			//Send them their saved balance
+		PayEther(msg.sender,savedBalances[msg.sender],now); 	//Log payback of ether
 	}
 
 	//Function to pay out Tokens
 	function payTokens() internal {
 		require(balances[msg.sender]>0);					//Does the requester have a balance?
 		uint tokenAmount = checkTokBalance(msg.sender);		//If so, then let's calculate how many Tokens we owe them
+		balances[msg.sender] = 0;							//Zero their balance ahead of transfer to avoid re-entrance (even though re-entrance here should be zero risk)
 		Token.transfer(msg.sender,tokenAmount);				//And transfer the tokens to them
-		balances[msg.sender] = 0;							//Zero their balance
 		PayTokens(msg.sender,tokenAmount,now);          	//Log payout of tokens to contributor
 	}
 
 	//Function to pay the creator upon success
 	function payCreator() {
 		require(isComplete());										//Creator can only request payout once ICO is complete
+		require(!creatorPaid);										//Require that the creator hasn't already been paid
+		creatorPaid = true;											//Set flag to show creator has been paid.
 		if(isSuccessful()){
 			uint tokensToBurn = tokenBalance() - checkTokTotal();	//How many left-over tokens after sold, and dev tokens are accounted for? (calculated before we muck with balance)
 			PayEther(escrow,this.balance,now);      				//Log the payout to escrow
