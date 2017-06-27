@@ -40,13 +40,13 @@ contract BattleDromeICO {
 	uint public constant fundingGoal = 500 ether;		//Minimum Goal in Ether Raised
 	uint public constant fundingMax = 20000 ether;		//Maximum Funds in Ether that we will accept before stopping the crowdsale
 	uint public constant devRatio = 20;					//Ratio of Sold Tokens to Dev Tokens (ie 20 = 20:1 or 5%)
-	address public constant tokenAddress 	= "0x0000000000000000000000000000000000000000";	//Address of ERC20 Token Contract
-	address public constant escrow 			= "0x50115D25322B638A5B8896178F7C107CFfc08144"; //Address of Escrow Provider Wallet
+	address public constant tokenAddress 	= 0x190e569bE071F40c704e15825F285481CB74B6cC;	//Address of ERC20 Token Contract
+	address public constant escrow 			= 0x50115D25322B638A5B8896178F7C107CFfc08144;	//Address of Escrow Provider Wallet
 
 	FAMEToken public Token;
 	address public creator;
 	uint public savedBalance;
-	uint public bool creatorPaid = false;		//Has the creator been paid? 
+	bool public creatorPaid = false;			//Has the creator been paid? 
 
 	mapping(address => uint) balances;			//Balances in incoming Ether
 	mapping(address => uint) savedBalances;		//Saved Balances in incoming Ether (for after withdrawl validation)
@@ -57,8 +57,15 @@ contract BattleDromeICO {
 		creator = msg.sender;							//Establish the Creator address for receiving payout if/when appropriate.
 	}
 
-	//Default Function, accepts incoming payments and tracks balances
+	//Default Function, delegates to contribute function (for ease of use)
+	//WARNING: Not compatible with smart contract invocation, will exceed gas stipend!
+	//Only use from full wallets.
 	function () payable {
+		contribute();
+	}
+
+	//Contribute Function, accepts incoming payments and tracks balances
+	function contribute() payable {
 		require(isStarted());								//Has the crowdsale even started yet?
 		require(this.balance<=fundingMax); 					//Does this payment send us over the max?
 		require(msg.value >= minimumPurchase);              //Require that the incoming amount is at least the minimum purchase size.
