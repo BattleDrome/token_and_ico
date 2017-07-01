@@ -17,19 +17,20 @@ ICO Contract Address: `0xeaAf270436a0ed397ED23BBF64DF7b1DCAfF142F`
 eg: `43,750,000,000,000 = 43.75 FAME`
 ### For Parity Users:
 1. Access the Parity Web UI
-2. Go to the Contracts Tab
-3. Click the +Watch Button
-4. Choose “Custom Contract” and click Next
-5. Paste the following address into the “network address” field:
+2. If you don't have a "Contracts" tab, go to the "Settings" tab, and check the box to enable it.
+3. Go to the Contracts Tab
+4. Click the +Watch Button
+5. Choose “Custom Contract” and click Next
+6. Paste the following address into the “network address” field:
 `0xeaAf270436a0ed397ED23BBF64DF7b1DCAfF142F`
-6. Put in “BattleDromeICO” In the “contract name” field
-7. Put a description such as "BattleDrome ICO Contract" in the description field
-8. Paste the ABI code from the section below into the ABI field.
-9. Click the "add contract" button
-10. Now the contract will appear in your list of saved contracts. You can click on it to view all of the functions which can be read or queried without requiring a transaction, such as the "isStarted", "isComplete", "isSuccessful", or "checkTokBalance" or "checkEthBalance" functions.
-11. If you wish to execute a function requiring a transaction such as "contribute" or "payMe" you will need to click on the "Execute" button near the top of the page.
-12. Then click the address you wish to execute the function from
-13. And choose the function you wish to execute from the dropdown list
+7. Type in “BattleDromeICO” In the “contract name” field
+8. Type a description such as "BattleDrome ICO Contract" in the description field
+9. Paste the ABI code from the section below into the ABI field.
+10. Click the "add contract" button
+11. Now the contract will appear in your list of saved contracts. You can click on it to view all of the functions which can be read or queried without requiring a transaction, such as the "isStarted", "isComplete", "isSuccessful", or "checkTokBalance" or "checkEthBalance" functions.
+12. If you wish to execute a function requiring a transaction such as "contribute" or "payMe" you will need to click on the "Execute" button near the top of the page.
+13. Then click the address you wish to execute the function from
+14. And choose the function you wish to execute from the dropdown list
 
 ### For Geth Users:
 Coming Soon!
