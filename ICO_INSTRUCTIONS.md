@@ -1,8 +1,9 @@
 # ICO Instructions & Tutorial:
 ## Contribution
 ### To Contribute from any “Full” wallet address:
-*eg: Mist, Geth, Ethereum-cpp, or Solidity*
-*(do NOT use this method to send from a multi-sig contract, or any other contract based wallet)*
+*This includes any wallet not using a smart-contract to store your balance. So far we've tested this with Geth, Solidity, and MyEtherWallet. For any other wallet type, please either verify if it's using a smart-contract to handle your transactions/balance, OR to play it sade, use the "Execute a function" instructions below, and execute the "contribute" function to participate.*
+
+**(do NOT use this method to send from a multi-sig contract, or any other contract based wallet. It will fail to work because of gas stipend limits.)**
 
 1. Send Ether to the ICO contract address in the amount you would like to contribute.
 ICO Contract Address: `0xeaAf270436a0ed397ED23BBF64DF7b1DCAfF142F`
@@ -25,17 +26,27 @@ eg: `43,750,000,000,000 = 43.75 FAME`
 `0xeaAf270436a0ed397ED23BBF64DF7b1DCAfF142F`
 7. Type in “BattleDromeICO” In the “contract name” field
 8. Type a description such as "BattleDrome ICO Contract" in the description field
-9. Paste the ABI code from the section below into the ABI field.
+9. Paste the ABI code from the section below into the ABI field. (note you can select it easily in chrome by tripleclicking in the text field with the ABI below)
 10. Click the "add contract" button
 11. Now the contract will appear in your list of saved contracts. You can click on it to view all of the functions which can be read or queried without requiring a transaction, such as the "isStarted", "isComplete", "isSuccessful", or "checkTokBalance" or "checkEthBalance" functions.
 12. If you wish to execute a function requiring a transaction such as "contribute" or "payMe" you will need to click on the "Execute" button near the top of the page.
 13. Then click the address you wish to execute the function from
 14. And choose the function you wish to execute from the dropdown list
 
-### For Geth Users:
-Coming Soon!
-
 ### For myEtherWallet 
+1. Access your myEtherWallet account (note if you don't have a wallet, follow this tutorial to create a wallet: https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-create-a-new-wallet )
+2. Once you have accessed your wallet, you can navigate to the "Contracts" tab
+3. Paste the ICO Contract address `0xeaAf270436a0ed397ED23BBF64DF7b1DCAfF142F` into the "Contract Address" field
+4. Paste the ABI JSON into the ABI/JSON Interface Field (copy from below, you can easily select the whole ABI by triple-clicking inside the field in chrome)
+5. Click the "Access" button. This will then pop up below a "Read/Write Contract" section, with a "Select a Function" dropdown.
+6. You can now select the function you wish to access using the dropdown, and it will either show you the value of the query (for example if you check isStarted, it will return "True" or "False") or it will present you with a "Write" button.
+7. Click the "Write" button, and it will prompt you any variables to provide, and an amount of ether to send. So for example if you are calling "Contribute" you can send in Ether this way to contribute to the ICO. 
+8. If you wish to check the balance of a contributor, choose checkEthBalance function, and provide the address you want to check.
+
+*Note: For myEtherWallet we are working on having the token and ICO contract added as standard "default" contracts. This will greatly simplify the process, hopefully very soon. These instructions will be updated once this is confirmed.*
+
+
+### For Geth Users:
 Coming Soon!
 
 ## ICO Contract Function Description:
