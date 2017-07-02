@@ -5,8 +5,10 @@
 
 **(do NOT use this method to send from a multi-sig contract, or any other contract based wallet. It will fail to work because of gas stipend limits.)**
 
+**It is important to include a minimum of 85,000 Gas with the transaction**
 1. Send Ether to the ICO contract address in the amount you would like to contribute.
 ICO Contract Address: `0xeaAf270436a0ed397ED23BBF64DF7b1DCAfF142F`
+2. Remember to include at least 85,000 gas with the transaction. Some wallets (such as Parity) should automatically detect the correct amount. But others may detect the default (such as 21,000) and if you send without increasing this, the tx will fail!
 2. You will be awarded balance based on your contribution, and can continue to send additional transactions in the future.
 3. At any time you can check your balance, using the steps below
 4. At ICO completion, you execute the “payMe” function on the contract, which will either return your ETH to you in full, in the event the ICO was unsuccessful, or send your new FAME tokens to the same address you used to send in your contribution.
