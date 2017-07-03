@@ -38,14 +38,14 @@ eg: `43,750,000,000,000 = 43.75 FAME`
 ### For myEtherWallet 
 1. Access your myEtherWallet account (note if you don't have a wallet, follow this tutorial to create a wallet: https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-create-a-new-wallet )
 2. Once you have accessed your wallet, you can navigate to the "Contracts" tab
-3. Paste the ICO Contract address `0xeaAf270436a0ed397ED23BBF64DF7b1DCAfF142F` into the "Contract Address" field
-4. Paste the ABI JSON into the ABI/JSON Interface Field (copy from below, you can easily select the whole ABI by triple-clicking inside the field in chrome)
+3. You should now be able to select the "BattleDrome ICO/Crowdsale" contract from the "Select Existing Contract" dropdown.
+4. Note that it's address should be: `0xeaAf270436a0ed397ED23BBF64DF7b1DCAfF142F`
 5. Click the "Access" button. This will then pop up below a "Read/Write Contract" section, with a "Select a Function" dropdown.
 6. You can now select the function you wish to access using the dropdown, and it will either show you the value of the query (for example if you check isStarted, it will return "True" or "False") or it will present you with a "Write" button.
 7. Click the "Write" button, and it will prompt you any variables to provide, and an amount of ether to send. So for example if you are calling "Contribute" you can send in Ether this way to contribute to the ICO. 
 8. If you wish to check the balance of a contributor, choose checkEthBalance function, and provide the address you want to check.
 
-*Note: For myEtherWallet we are working on having the token and ICO contract added as standard "default" contracts. This will greatly simplify the process, hopefully very soon. These instructions will be updated once this is confirmed.*
+**Note: MyEtherWallet now has native support for the BattleDrome ICO and FAME Token. When you go to the Contracts page on step 2 above, you can now select the BattleDrome ICO from the dropdown instead of all the copying and pasting!**
 
 
 ### For Geth Users:
